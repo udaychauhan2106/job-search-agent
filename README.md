@@ -61,45 +61,6 @@ agent.py           Agent construction and invocation logic (no UI code)
 streamlit_app.py   Streamlit UI - the only entry point
 ```
 
-## Setup
-
-```bash
-git clone https://github.com/udaychauhan2106/job-search-agent.git
-cd job-search-agent
-pip install -r requirements.txt
-cp .env.example .env
-# then fill in GOOGLE_API_KEY and TAVILY_API_KEY in .env
-```
-
-Get free API keys:
-- Google Gemini: https://aistudio.google.com/apikey
-- Tavily: https://tavily.com
-
-## Run locally
-
-```bash
-streamlit run streamlit_app.py
-```
-
-This opens the app in your browser. From there:
-1. Enter a target role and location in the sidebar.
-2. Upload your resume as a `.txt`/`.md` file, or paste it directly.
-3. Click **Search jobs**.
-4. Review ranked matches with match scores, matching/missing skills, and
-   reasoning, and download the full results as JSON.
-
-## Deploying to Streamlit Community Cloud
-
-1. Push this repo to GitHub (already done if you're reading this there).
-2. Go to https://share.streamlit.io, sign in, and click **New app**.
-3. Point it at this repo, branch `main`, and file `streamlit_app.py`.
-4. Under **Advanced settings → Secrets**, add:
-   ```toml
-   GOOGLE_API_KEY = "your-key-here"
-   TAVILY_API_KEY = "your-key-here"
-   ```
-5. Deploy. The app reads keys from `st.secrets` automatically when deployed,
-   and falls back to your local `.env` when run locally.
 
 ## Limitations
 
