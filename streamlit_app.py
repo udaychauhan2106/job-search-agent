@@ -15,9 +15,11 @@ st.set_page_config(page_title="Job Search Agent", page_icon="🔎", layout="wide
 def get_api_key(name: str) -> str:
     """Prefer Streamlit secrets (for deployed apps), fall back to env vars (for local .env)."""
     try:
-        return st.secrets[name]
-    except (KeyError, FileNotFoundError):
-        return os.environ.get(name, "")
+        if name in st.secrets:
+            return st.secrets[name]
+    except Exception:
+        pass
+    return os.environ.get(name, "")
 
 
 GOOGLE_API_KEY = get_api_key("GOOGLE_API_KEY")
